@@ -74,10 +74,8 @@ const EnterpriseList = props => {
             dispatch(isFilteredAction(true))
             dispatch(filterEnterprises(userLogin.header, id, name))
         } else {
-            setIsSearched(true)
-            setIsVisible(true)
-            dispatch(isFilteredAction(false))
-            dispatch(getAllEnterprises(userLogin.header))
+            setIsSearched(false)
+            setEnterprises(getEnterprises(filteredEnterprises))
         }
     }
     useEffect(() => {
@@ -88,14 +86,6 @@ const EnterpriseList = props => {
             dispatch(isFilteredAction(false))
         }
     }, [filteredEnterprises])
-
-    useEffect(() => {
-        if (enterprises && isSearched) {
-            setEnterprises(getEnterprises(enterprises))
-            setIsVisible(false)
-            setIsSearched(false)
-        }
-    }, [isFiltered])
 
     const renderHeader = () => {
         return (
