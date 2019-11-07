@@ -1,44 +1,44 @@
-import React, { useState, useRef, useEffect } from 'react';
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useState, useEffect} from 'react';
 import Button from '../../components/core/Button';
 import Input from '../../components/core/TextInput';
 import Loader from '../../components/core/Loader';
-import { Image } from 'react-native';
-import { sendLoginRequest } from '../../actions/login'
-import { getAllEnterprises } from '../../actions/login'
-import { useSelector, useDispatch } from 'react-redux';
+import {Image} from 'react-native';
+import {sendLoginRequest} from '../../actions/login';
+import {getAllEnterprises} from '../../actions/login';
+import {useSelector, useDispatch} from 'react-redux';
 
-const LoginScreen = (props) => {
-  const [isVisible, setIsVisible] = useState(false)
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
+const LoginScreen = props => {
+  const {navigation} = props;
+  const [isVisible, setIsVisible] = useState(false);
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
 
   //mapStateToProps
-  const userLogin = useSelector(state => state.login.userLogin)
-  const enterprises = useSelector(state => state.enterprise.enterprises)
-  const status = useSelector(state => state.enterprise.status)
+  const userLogin = useSelector(state => state.login.userLogin);
+  const enterprises = useSelector(state => state.enterprise.enterprises);
 
   //mapDispatchToProps
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const submitLogin = () => {
-    dispatch(sendLoginRequest(login, password))
-    setIsVisible(true)
-  }
+    dispatch(sendLoginRequest(login, password));
+    setIsVisible(true);
+  };
 
   //componentDidUpdate
   useEffect(() => {
     if (userLogin !== null) {
-      dispatch(getAllEnterprises(userLogin.header))
+      dispatch(getAllEnterprises(userLogin.header));
     }
-  }, [userLogin])
+  }, [userLogin]);
   useEffect(() => {
     if (enterprises !== null) {
-      setIsVisible(false)
-      props.navigation.navigate('EnterpriseList')
+      setIsVisible(false);
+      navigation.navigate('EnterpriseList');
     }
-  }, [enterprises])
-
+  }, [enterprises]);
 
   //state
 
@@ -48,13 +48,13 @@ const LoginScreen = (props) => {
       <>
         <Loader visible={true} fullscreenLoader={true} />
       </>
-    )
+    );
   }
   return (
     <>
       <Image
         key="image"
-        style={{ width: 175, height: 175, alignSelf: 'center' }}
+        style={{width: 175, height: 175, alignSelf: 'center'}}
         source={require('../../assets/images/ioasys-logo.png')}
       />
       <Input
@@ -88,6 +88,6 @@ const LoginScreen = (props) => {
         onPress={() => submitLogin()}
       />
     </>
-  )
-}
-export default LoginScreen
+  );
+};
+export default LoginScreen;

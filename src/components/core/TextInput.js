@@ -2,30 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-
 import SPACING from '../../config/spacing';
 import TYPOGRAPHY from '../../config/typography';
 import COLORS from '../../config/colors';
 
 const TextInput = props => {
-  return [
+  const {children, placeholder} = props;
+  return (
     <TextInputStyled
       {...props}
       key="text-input"
       underlineColorAndroid={props.underlineColorAndroid}
-      placeholder={props.placeholder}
+      placeholder={placeholder}
       selectionColor={props.selectionColor}>
-      {props.children}
-    </TextInputStyled>,
-  ];
+      {children}
+    </TextInputStyled>
+  );
 };
 
 export default TextInput;
 
 const TextInputStyled = styled.TextInput`
   flex: 1;
-  width: ${props => props.width ? props.width : 'auto'};
-  height: ${props => props.height ? props.height : 'auto'};
+  width: ${props => (props.width ? props.width : 'auto')};
+  height: ${props => (props.height ? props.height : 'auto')};
   max-height: ${props => props.maxHeight};
   padding-top: ${props => props.paddingTop};
   padding-bottom: ${props => props.paddingBottom};

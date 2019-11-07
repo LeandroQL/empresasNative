@@ -7,12 +7,13 @@ import TYPOGRAPHY from '../../config/typography';
 import COLORS from '../../config/colors';
 
 const Button = props => {
+  const {onPress, children, isLoading} = props;
   return (
-    <StyledTouchableOpacity onPress={props.onPress} {...props}>
-      {props.isLoading ? (
+    <StyledTouchableOpacity onPress={onPress} {...props}>
+      {isLoading ? (
         <ActivityIndicator size="small" color={COLORS.white} />
       ) : (
-        <StyledText {...props}>{props.children}</StyledText>
+        <StyledText {...props}>{children}</StyledText>
       )}
     </StyledTouchableOpacity>
   );
@@ -21,25 +22,25 @@ const Button = props => {
 export default Button;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
-    width: ${props => props.width};
-    height: ${props => props.height};
-    maxHeight: ${props => props.maxHeight};
-    background-color: ${props => props.backgroundColor};
-    display: flex;
-    justify-content: ${props => props.justifyContent};
-    align-items: ${props => props.alignItems};
-    border-width: ${props => props.borderWidth};
-    border-color: ${props => props.borderColor};
-    border-radius: ${props => props.borderRadius};
-    margin-top: ${props => props.marginTop};
-    margin-bottom: ${props => props.marginBottom};
-    margin-left: ${props => props.marginLeft};
-    margin-right: ${props => props.marginRight};
-    position: ${props => props.position};
-    top: ${props => props.top};
-    bottom: ${props => props.bottom};
-    left: ${props => props.left};
-    right: ${props => props.right};
+  width: ${props => props.width};
+  height: ${props => props.height};
+  max-height: ${props => props.maxHeight};
+  background-color: ${props => props.backgroundColor};
+  display: flex;
+  justify-content: ${props => props.justifyContent};
+  align-items: ${props => props.alignItems};
+  border-width: ${props => props.borderWidth};
+  border-color: ${props => props.borderColor};
+  border-radius: ${props => props.borderRadius};
+  margin-top: ${props => props.marginTop};
+  margin-bottom: ${props => props.marginBottom};
+  margin-left: ${props => props.marginLeft};
+  margin-right: ${props => props.marginRight};
+  position: ${props => props.position};
+  top: ${props => props.top};
+  bottom: ${props => props.bottom};
+  left: ${props => props.left};
+  right: ${props => props.right};
 `;
 
 const StyledText = styled.Text`

@@ -1,23 +1,41 @@
-import React from 'react'
-import { Text, ScrollView } from 'react-native'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import {ScrollView} from 'react-native';
+import styled from 'styled-components';
 
-import TYPOGRAPHY from '../../config/typography'
-import COLORS from '../../config/colors'
-import Button from './Button'
+import Button from './Button';
 
 const Card = props => {
+  const {enterprise, navigation, details, list} = props;
   return (
     <ScrollView>
-      <StyledTouchableOpacity {...props} key='card'>
-        <StyledText textAlign={'center'} fontSize={'30px'} fontWeight={900} paddingLeft={25} paddingTop={25}>{props.enterprise.enterprise_name}</StyledText>
-        <StyledText >País: {props.enterprise.country}</StyledText>
-        <StyledText>Cidade: {props.enterprise.city}</StyledText>
-        {props.details && props.navigation ?
+      <StyledTouchableOpacity {...props} key="card">
+        <StyledText
+          textAlign={'center'}
+          fontSize={'30px'}
+          fontWeight={900}
+          paddingLeft={25}
+          paddingTop={25}>
+          {enterprise.enterprise_name}
+        </StyledText>
+        <StyledText>País: {enterprise.country}</StyledText>
+        <StyledText>Cidade: {enterprise.city}</StyledText>
+        {details ? (
           <>
-            <StyledText textAlign={'justify'} lineHeight={55} paddingLeft={0} paddingRight={25} fontSize={25}>Quem somos?</StyledText>
-            <StyledText textAlign={'justify'} lineHeight={25} paddingLeft={0} paddingRight={25}>{props.enterprise.description}</StyledText>
+            <StyledText
+              textAlign={'justify'}
+              lineHeight={55}
+              paddingLeft={0}
+              paddingRight={25}
+              fontSize={25}>
+              Quem somos?
+            </StyledText>
+            <StyledText
+              textAlign={'justify'}
+              lineHeight={25}
+              paddingLeft={0}
+              paddingRight={25}>
+              {enterprise.description}
+            </StyledText>
             <Button
               key="buttonLogin"
               children={'VOLTAR'}
@@ -26,17 +44,19 @@ const Card = props => {
               width={313}
               marginTop={'15px'}
               maxHeight={'auto'}
-              onPress={() => props.navigation.goBack()}
+              onPress={() => navigation.goBack()}
             />
           </>
-          :
+        ) : (
           <></>
-        }
-        {props.list ?
-          <StyledText textAlign={'justify'} paddingRight={25} >Share Prices: {props.enterprise.share_price}</StyledText>
-          :
+        )}
+        {list ? (
+          <StyledText textAlign={'justify'} paddingRight={25}>
+            Share Prices: {enterprise.share_price}
+          </StyledText>
+        ) : (
           <></>
-        }
+        )}
       </StyledTouchableOpacity>
     </ScrollView>
   );
@@ -44,26 +64,28 @@ const Card = props => {
 export default Card;
 
 const StyledText = styled.Text`
-color: ${props => props.color ? props.color : 'black'};
-textAlign: ${props => props.textAlign ? props.textAlign : 'left'};
-fontSize: ${props => props.fontSize ? props.fontSize : '16px'};
-fontWeight: ${props => props.fontWeight ? props.fontWeight : 900};
-lineHeight: ${props => props.lineHeight ? props.lineHeight : 35};
-paddingTop: ${props => props.paddingTop ? props.paddingTop : 0};
-paddingRight: ${props => props.paddingRight ? props.paddingRight : 0};
-paddingBottom: ${props => props.paddingBottom ? props.paddingBottom : 0};
-paddingLeft: ${props => props.paddingLeft ? props.paddingLeft : 0};
-`
+  color: ${props => (props.color ? props.color : 'black')};
+  text-align: ${props => (props.textAlign ? props.textAlign : 'left')};
+  font-size: ${props => (props.fontSize ? props.fontSize : '16px')};
+  font-weight: ${props => (props.fontWeight ? props.fontWeight : 900)};
+  line-height: ${props => (props.lineHeight ? props.lineHeight : 35)};
+  padding-top: ${props => (props.paddingTop ? props.paddingTop : 0)};
+  padding-right: ${props => (props.paddingRight ? props.paddingRight : 0)};
+  padding-bottom: ${props => (props.paddingBottom ? props.paddingBottom : 0)};
+  padding-left: ${props => (props.paddingLeft ? props.paddingLeft : 0)};
+`;
 const StyledTouchableOpacity = styled.TouchableOpacity`
-borderStyle: ${props => props.borderStyle ? props.borderStyle : 'solid'};
-elevation: ${props => props.elevation ? props.elevation : 0};
-marginBottom: ${props => props.marginBottom ? props.marginBottom : 30};
-backgroundColor: ${props => props.backgroundColor ? props.backgroundColor : 'white'};
-borderRadius: ${props => !props.list && props.borderRadius ? props.borderRadius : 10};
-marginLeft: ${props => props.marginLeft ? props.marginLeft : 15};
-marginTop: ${props => props.marginTop ? props.marginTop : 15};
-marginRight: ${props => props.marginRight ? props.marginRight : 15};
-paddingLeft: ${props => props.paddingLeft ? props.paddingLeft : 15};
-flex: ${props => props.flex ? props.flex : 1};
-paddingBottom: ${props => props.paddingBottom ? props.paddingBottom : 15};
-`
+  border-style: ${props => (props.borderStyle ? props.borderStyle : 'solid')};
+  elevation: ${props => (props.elevation ? props.elevation : 0)};
+  margin-bottom: ${props => (props.marginBottom ? props.marginBottom : 30)};
+  background-color: ${props =>
+    props.backgroundColor ? props.backgroundColor : 'white'};
+  border-radius: ${props =>
+    !props.list && props.borderRadius ? props.borderRadius : 10};
+  margin-left: ${props => (props.marginLeft ? props.marginLeft : 15)};
+  margin-top: ${props => (props.marginTop ? props.marginTop : 15)};
+  margin-right: ${props => (props.marginRight ? props.marginRight : 15)};
+  padding-left: ${props => (props.paddingLeft ? props.paddingLeft : 15)};
+  flex: ${props => (props.flex ? props.flex : 1)};
+  padding-bottom: ${props => (props.paddingBottom ? props.paddingBottom : 15)};
+`;

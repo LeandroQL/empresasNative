@@ -1,13 +1,14 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 import LoginContainer from './LoginScreen';
 
 const LoginScreen = props => {
+  const {navigation} = props;
   return (
     <>
       <SafeAreaView key="SafeView" />
-      <LoginContainer navigation={props.navigation} key="LoginContainer" />
+      <LoginContainer navigation={navigation} key="LoginContainer" />
     </>
-  )
-}
-export default LoginScreen
+  );
+};
+export default LoginScreen;

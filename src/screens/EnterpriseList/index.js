@@ -1,14 +1,15 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 import EnterpriseList from './EnterpriseList';
 
 const EnterpriseListContainer = props => {
+  const {navigation} = props;
   return (
     <>
       <SafeAreaView key="SafeView" />
-      <EnterpriseList navigation={props.navigation} key="EnterpriseList" />
+      <EnterpriseList navigation={navigation} key="EnterpriseList" />
     </>
-  )
-}
+  );
+};
 
-export default EnterpriseListContainer
+export default EnterpriseListContainer;
