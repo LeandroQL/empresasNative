@@ -73,9 +73,11 @@ const EnterpriseList = props => {
             setIsVisible(true)
             dispatch(isFilteredAction(true))
             dispatch(filterEnterprises(userLogin.header, id, name))
+            setId('')
+            setName('')
         } else {
             setIsSearched(false)
-            setEnterprises(getEnterprises(filteredEnterprises))
+            setEnterprises(getEnterprises(enterprises))
         }
     }
     useEffect(() => {
