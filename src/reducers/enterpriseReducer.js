@@ -3,7 +3,6 @@ const initialState = {
     status: null,
     enterprise: null,
     enterprises: null,
-    isFiltered: false,
     filteredEnterprises: null,
 };
 
@@ -11,9 +10,6 @@ export const enterpriseReducer = (state = initialState, action) => {
     switch (action.type) {
         case enterpriseActions.STATUS:
             return { ...state, status: Object.assign({}, action.payload) };
-            break;
-        case enterpriseActions.IS_FILTERED:
-            return { ...state, isFiltered: action.payload };
             break;
         case enterpriseActions.ENTERPRISE:
             return { ...state, enterprise: action.payload };
