@@ -16,18 +16,17 @@ const Card = props => {
         <StyledText>Cidade: {props.enterprise.city}</StyledText>
         {props.details && props.navigation ?
           <>
-            <StyledText textAlign={'justify'} lineHeight={55} paddingLeft={25} paddingRight={25} fontSize={25}>Quem somos?</StyledText>
-            <StyledText textAlign={'justify'} lineHeight={25} paddingLeft={25} paddingRight={25}>{props.enterprise.description}</StyledText>
+            <StyledText textAlign={'justify'} lineHeight={55} paddingLeft={0} paddingRight={25} fontSize={25}>Quem somos?</StyledText>
+            <StyledText textAlign={'justify'} lineHeight={25} paddingLeft={0} paddingRight={25}>{props.enterprise.description}</StyledText>
             <Button
               key="buttonLogin"
               children={'VOLTAR'}
               backgroundColor={'#6144ce'}
-              marginLeft={'50px'}
-              marginRight={'150px'}
+              justifyContent={'center'}
               width={313}
               marginTop={'15px'}
               maxHeight={'auto'}
-              onPress={() => props.navigation.navigate('EnterpriseList')}
+              onPress={() => props.navigation.goBack()}
             />
           </>
           :
