@@ -122,7 +122,7 @@ const EnterpriseList = props => {
 
     const renderCards = (enterprise) => {
         return (
-            <Card elevation={15} onPress={() => getEnterpriseDetails(enterprise.id)} list={true} key={enterprise.id} enterprise={enterprise} />
+            <Card elevation={15} onPress={() => getEnterpriseDetails(enterprise.id)} list={true} enterprise={enterprise} />
         )
     }
     if (isVisible) {
@@ -139,7 +139,7 @@ const EnterpriseList = props => {
                 <FlatList
                     data={stateEnterprises}
                     renderItem={({ item }) => renderCards(item)}
-                    keyExtractor={item => item ? item.id : ''}
+                    keyExtractor={item => `${item.id}`}
                     ListHeaderComponent={renderHeader()}
                 />
             </SafeAreaView>
