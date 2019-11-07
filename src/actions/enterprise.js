@@ -22,7 +22,4 @@ export const getStatus = value => ({
     type: enterpriseActions.STATUS,
     payload: value,
 })
-export const isFilteredAction = value => ({
-    type: enterpriseActions.IS_FILTERED,
-    payload: value,
-})
+

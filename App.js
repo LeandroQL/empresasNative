@@ -13,9 +13,6 @@ import React from 'react';
 import { Provider, useSelector, useDispatch } from 'react-redux'
 import { Store } from './src/store/index'
 import styled from 'styled-components'
-import LoginScreen from './src/screens/Login/index'
-import EnterpriseDetail from './src/screens/EnterpriseDetail/index'
-import EnterpriseListContainer from './src/screens/EnterpriseList/index'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import {

@@ -5,11 +5,9 @@ import Input from '../../components/core/TextInput';
 import Button from '../../components/core/Button';
 import Loader from '../../components/core/Loader';
 import { getAllEnterprises, getEnterprisesById, filterEnterprises } from '../../actions/login'
-import { isFilteredAction } from '../../actions/enterprise'
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { enterprises } from '../../config/enterprises'
 import { SafeAreaView, View, FlatList, StyleSheet, Text } from 'react-native';
-import { shallowEqual } from '@babel/types';
 
 const EnterpriseList = props => {
     //componentDidUpdate
@@ -21,9 +19,9 @@ const EnterpriseList = props => {
         return array
     }
     // mapStateToProps
-    const userLogin = useSelector(state => state.login.userLogin, shallowEqual)
-    const enterprise = useSelector(state => state.enterprise.enterprise, shallowEqual)
-    const enterprises = useSelector(state => state.enterprise.enterprises, shallowEqual)
+    const userLogin = useSelector(state => state.login.userLogin)
+    const enterprise = useSelector(state => state.enterprise.enterprise)
+    const enterprises = useSelector(state => state.enterprise.enterprises)
     const status = useSelector(state => state.enterprise.status)
     const filteredEnterprises = useSelector(state => state.enterprise.filteredEnterprises)
 
@@ -71,7 +69,6 @@ const EnterpriseList = props => {
         if (id !== '' || name !== '') {
             setIsSearched(true)
             setIsVisible(true)
-            dispatch(isFilteredAction(true))
             dispatch(filterEnterprises(userLogin.header, id, name))
             setId('')
             setName('')
@@ -85,7 +82,6 @@ const EnterpriseList = props => {
             setEnterprises(getEnterprises(filteredEnterprises))
             setIsVisible(false)
             setIsSearched(false)
-            dispatch(isFilteredAction(false))
         }
     }, [filteredEnterprises])
 

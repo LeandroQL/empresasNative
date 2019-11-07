@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Button from '../../components/core/Button';
 import Input from '../../components/core/TextInput';
-import Card from '../../components/core/Card';
 import Loader from '../../components/core/Loader';
 import { Image } from 'react-native';
 import { sendLoginRequest } from '../../actions/login'
 import { getAllEnterprises } from '../../actions/login'
-import { connect, useSelector, useDispatch } from 'react-redux';
-import { shallowEqual } from '@babel/types';
+import { useSelector, useDispatch } from 'react-redux';
 
 const LoginScreen = (props) => {
   const [isVisible, setIsVisible] = useState(false)
