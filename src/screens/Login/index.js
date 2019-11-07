@@ -4,10 +4,12 @@ import LoginContainer from './LoginScreen';
 class LoginScreen extends React.Component {
 
   render() {
-    return [
-      <SafeAreaView key="SafeView" />,
-      <LoginContainer navigation={this.props.navigation} key="LoginContainer" />,
-    ];
+    return (
+      <>
+        <SafeAreaView key="SafeView" />
+        <LoginContainer navigation={this.props.navigation} key="LoginContainer" />
+      </>
+    );
   }
 }
 
